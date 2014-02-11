@@ -6,7 +6,7 @@ var fs = require('fs-extra');
 /************************************************************************/
 
 var docsRepo = 'git://github.com/balderdashy/sails-docs.git';
-
+//lol testing
 // Markdown converter options
 muOptions = {
 	gfm: true,
