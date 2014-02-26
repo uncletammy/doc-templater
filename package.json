@@ -5,7 +5,9 @@
     "description": "Creates organized HTML documentation templates from sections of Github flavored markdown",
     "dependencies": {
         "marked": "0.2.10",
-        "fs-extra": "~0.8.1"
+        "fs-extra": "~0.8.1",
+        "lodash": "~2.4.1",
+        "node-jsondir": "git://github.com/dwieeb/node-jsondir.git"
     },
     "repository": {
         "type": "git",
@@ -20,8 +22,7 @@
     "author": {
         "name": "Nicholas Crumrine"
     },
-    "main": "index.js",
-    "repository": "",
+    "main": "module.js",
     "author": "",
     "license": ""
 }
