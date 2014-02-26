@@ -32,14 +32,15 @@ var utils = {
 		var saveToDisk = function(err,html){
 			var afterConvertCB = cb;
 			if (err){
+				console.log('File save error:',err)
 				return afterConvertCB({type:'conversion',err:err})
 			} else {
-				return afterWriteCB(fs.outputFile(savePath + '.html', html));
+				return afterWriteCB(fs.outputFileSync(savePath + '.html', html));
 			}
 
 		}
 
-
+		//console.log('saving:',md)
 		convertToHTML(md, utils.markedOptions, saveToDisk)
 	},
 	writeTemplates: function(jsonTree,returnResults){
@@ -225,7 +226,12 @@ var utils = {
 		// 	console.log(baseDir+docsDirName,'doesnt exist')
 
 	//	fs.mkdirsSync(baseDir);
-		process.chdir('.tmp/docTemplater/');
+		var tmpDir = '.tmp/docTemplater/';
+
+		if (!fs.existsSync(tmpDir))
+			fs.mkdirsSync(tmpDir);
+
+		process.chdir(tmpDir)
 
 		var clone = spawn('git', ['clone', repoURL]);
 
