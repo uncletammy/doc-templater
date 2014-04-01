@@ -22,7 +22,7 @@
     "author": {
         "name": "Nicholas Crumrine"
     },
-    "main": "module.js",
+    "main": "lib/index.js",
     "author": "",
     "license": ""
 }
