@@ -10,33 +10,139 @@ Creates organized HTML documentation templates from sections of Github flavored 
 
 		var templater = require('docTemplater');
 
-		var docsRepo = 'git://github.com/balderdashy/sails-docs-guides.git';
-
-		var parseThese = {
-				baseDir: true,
-			//	dirName: 'reference',
+		var parseThese = [{
+				docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+				prependPathAndName: true,
+				addToSitemap: false,
+				parsedTemplatesDirectory: 'assets/templates/guides/'
+			},{
+				docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+				dirNameInRepo: 'reference',
+				prependPathAndName: true,
 				addToSitemap: true,
-				saveDirectory: 'assets/templates/guides/'
-			};
-
-
+				parsedTemplatesDirectory: 'assets/templates/reference/'
+			},{
+				docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+				dirNameInRepo: 'anatomy',
+				prependPathAndName: false,
+				addToSitemap: true,
+				parsedTemplatesDirectory: 'assets/templates/anatomy/'
+			}];
+		
 		var afterTemplateCB = function(err,stuff){
 					if (err){
-						console.log('There was an error bro',err);
+						console.log('There was at least one error bro',err)
 					} else {
-						console.log('Here are all the html files written to disk',stuff);
+						console.log('No errors.  WOOOO!');
+						console.log('All the Stuff:',stuff)
 					}
-		}
+		};
+		
+		templater.createTemplate(parseThese,afterTemplateCB);
 
-		templater.createTemplate(docsRepo,parseThese,afterTemplateCB);
+/*
+dude@littleDude:~/node/templaterTest$ node testItBro.js 
+addToSiteMap is undefined.  Next time i'll throw an error
+dirNameInRepo is undefined.  Next time i'll throw an error
+cloning Repo: git://github.com/balderdashy/sails-docs-guides.git
 
+Info:Cloning into 'sails-docs-guides'...
 
-// Sucessfully Cloned: .tmp/docTemplater/sails-docs-guides
-// Done parsing git://github.com/balderdashy/sails-docs-guides.git
+You have completed a docs object. wtg
+addToSiteMap is undefined.  Next time i'll throw an error
+cloning Repo: git://github.com/balderdashy/sails-docs.git
 
+Info:Cloning into 'sails-docs'...
+
+You have completed a docs object. wtg
+addToSiteMap is undefined.  Next time i'll throw an error
+cloning Repo: git://github.com/balderdashy/sails-docs.git
+
+Info:Cloning into 'sails-docs'...
+
+You have completed a docs object. wtg
+All Done with all docsObjects!
+No errors.  WOOOO!
+All the Stuff: [ { config: 
+     { errors: [],
+       results: [],
+       prependPathAndName: true,
+       addToSiteMap: false,
+       __useBaseDir: true,
+       dirNameInRepo: 'sails-docs-guides',
+       __docsRepoOnDisk: '.tmp/docTemplater/sails-docs-guides',
+       docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+       parsedTemplatesDirectory: 'assets/templates/guides' },
+    jsonTreeOfRepo: 
+     { '-path': '/home/dude/node/templaterTest/.tmp/docTemplater/sails-docs-guides',
+       '-type': 'd',
+       '-mode': 493,
+       '.git': [Object],
+       'README.txt': [Object],
+       'deployment.md': [Object],
+       'generators.md': [Object],
+       'gettingStarted.md': [Object],
+       'httpStuff.md': [Object],
+       'security.md': [Object],
+       'workingWithData.md': [Object] } },
+  { config: 
+     { errors: [],
+       results: [],
+       prependPathAndName: true,
+       addToSiteMap: false,
+       __useBaseDir: false,
+       dirNameInRepo: 'reference',
+       __baseDocsRepoOnDisk: 'sails-docs',
+       __docsRepoOnDisk: '.tmp/docTemplater/sails-docs/reference',
+       docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+       parsedTemplatesDirectory: 'assets/templates/reference' },
+    jsonTreeOfRepo: 
+     { '-path': '/home/dude/node/templaterTest/.tmp/docTemplater/sails-docs/reference',
+       '-type': 'd',
+       '-mode': 493,
+       'Assets.md': [Object],
+       'Blueprints.md': [Object],
+       'BrowserSDK.md': [Object],
+       'CommandLine.md': [Object],
+       'Configuration.md': [Object],
+       'Controllers.md': [Object],
+       'CustomResponses.md': [Object],
+       'Deployment.md': [Object],
+       'Globals.md': [Object],
+       'ModelAssociations.md': [Object],
+       'ModelMethods.md': [Object],
+       'Models.md': [Object],
+       'Policies.md': [Object],
+       'README.txt': [Object],
+       'Request.md': [Object],
+       'Response.md': [Object],
+       'Routes.md': [Object],
+       'Security.md': [Object],
+       'Services.md': [Object],
+       'Sockets.md': [Object],
+       'Upgrading.md': [Object],
+       'Views.md': [Object],
+       'i18n.md': [Object] } },
+  { config: 
+     { errors: [],
+       results: [],
+       prependPathAndName: false,
+       addToSiteMap: false,
+       __useBaseDir: false,
+       dirNameInRepo: 'anatomy',
+       __baseDocsRepoOnDisk: 'sails-docs',
+       __docsRepoOnDisk: '.tmp/docTemplater/sails-docs/anatomy',
+       docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+       parsedTemplatesDirectory: 'assets/templates/anatomy' },
+    jsonTreeOfRepo: 
+     { '-path': '/home/dude/node/templaterTest/.tmp/docTemplater/sails-docs/anatomy',
+       '-type': 'd',
+       '-mode': 493,
+       'myApp.md': [Object] } } ]
+*/
 
 ```
 
-It returns a collection of these `{fileWritten:'path/on/disk.html',didWrite:true}`
+It returns an array of objects with all that good info in them.
 
 Good luck
