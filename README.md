@@ -20,7 +20,14 @@ Creates organized HTML documentation templates from sections of Github flavored 
 				dirNameInRepo: 'reference',
 				prependPathAndName: true,
 				addToSitemap: true,
-				parsedTemplatesDirectory: 'assets/templates/reference/'
+				parsedTemplatesDirectory: 'assets/templates/reference/',
+        applyToTemplates:{
+          //beforeConvert: function(writeFileObject,cb){},
+          afterConvert: function(writeFileObject,cb){
+            writeFileObject.templateHTML = writeFileObject.templateHTML.replace(/\d{1,2}-\d{1,2}-\d{4}/ig,'TIME AINT REAL');
+            return cb(writeFileObject)
+          }
+        }
 			},{
 				docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
 				dirNameInRepo: 'anatomy',
