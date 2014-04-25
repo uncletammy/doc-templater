@@ -1,28 +1,33 @@
 {
-    "name": "docTemplater",
-    "private": true,
-    "version": "0.0.1",
-    "description": "Creates organized HTML documentation templates from sections of Github flavored markdown",
-    "dependencies": {
-        "marked": "0.2.10",
-        "fs-extra": "~0.8.1",
-        "lodash": "~2.4.1",
-        "node-jsondir": "git://github.com/dwieeb/node-jsondir.git"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/uncletammy/docTemplater.git"
-    },
-    "keywords": [
-        "gfmd",
-        "documentation templates",
-        "docs",
-        "markdown"
-    ],
-    "author": {
-        "name": "Nicholas Crumrine"
-    },
-    "main": "lib/index.js",
-    "author": "",
-    "license": ""
+  "name": "doc-templater",
+  "private": false,
+  "version": "0.0.1",
+  "description": "Creates organized HTML templates from markdown files that are hosted on Github Repos",
+  "dependencies": {
+    "marked": "0.2.10",
+    "fs-extra": "~0.8.1",
+    "lodash": "~2.4.1",
+    "node-jsondir": "git://github.com/dwieeb/node-jsondir.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uncletammy/doc-templater.git"
+  },
+  "keywords": [
+    "gfmd",
+    "documentation templates",
+    "docs",
+    "markdown"
+  ],
+  "author": "Nicholas Crumrine",
+  "main": "lib/index.js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uncletammy/doc-templater/issues"
+  },
+  "homepage": "https://github.com/uncletammy/doc-templater",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
