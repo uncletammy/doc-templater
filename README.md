@@ -8,7 +8,7 @@ Creates organized HTML documentation templates from sections of Github flavored 
 ```javascript
 
 
-		var templater = require('docTemplater');
+		var templater = require('doc-templater');
 
 		var parseThese = [{
 				docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
