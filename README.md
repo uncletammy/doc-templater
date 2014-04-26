@@ -1,4 +1,7 @@
-# Doc Templater
+# [![Doc-Templater](http://dashkards.com/img/markdown-icon.png) Doc-Templater](https://github.com/balderdashy/doc-templater)
+
+[![NPM version](https://badge.fury.io/js/doc-templater.png)](http://badge.fury.io/js/doc-templater) &nbsp; &nbsp;
+[![Build Status](https://travis-ci.org/balderdashy/doc-templater.svg?branch=master)](https://travis-ci.org/balderdashy/doc-templater)
 
 Creates organized HTML documentation templates from sections of Github flavored markdown.
  
@@ -153,3 +156,18 @@ All the Stuff: [ { config:
 It returns an array of objects with all that good info in them.
 
 Good luck
+
+
+### License
+
+
+**[MIT](./LICENSE)**
+&copy; 2013-2014 [Nicholas Crumrine](https://github.com/uncletammy), [Balderdash](http://balderdash.co) & contributors
+
+This module is part of the [Node.js](http://nodejs.org) and [Sails framework](http://sailsjs.org) ecosystem, and is free and open-source under the [MIT License](http://sails.mit-license.org/).
+
+
+![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png) 
+ 
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)

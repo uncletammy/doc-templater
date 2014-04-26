@@ -24,7 +24,7 @@
     "balderdashy"
   ],
   "main": "lib/index.js",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/uncletammy/doc-templater/issues"
   },
