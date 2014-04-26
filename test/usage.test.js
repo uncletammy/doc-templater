@@ -14,15 +14,17 @@ describe('Compiler.prototype', function () {
     assert(compiler instanceof Compiler);
   });
 
-  describe('.build()', function () {
-    it('should not throw when an empty set of build instructions is supplied', function () {
-      compiler.build([], function NOOP (){});
-    });
 
-    describe('callback', function () {
-      it('should be optional', function () {
+
+  describe('.build()', function () {
+    describe('usage', function () {
+      it('should not throw when an empty set of build instructions is supplied', function () {
+        compiler.build([], function NOOP (){});
+      });
+      it('callback should be optional', function () {
         compiler.build([]);
       });
     });
+
   });
 });
