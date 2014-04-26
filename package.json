@@ -33,6 +33,6 @@
     "fs-extra": "~0.8.1"
   },
   "scripts": {
-    "test": "mocha test -R spec -b"
+    "test": "mocha test -R spec -b -t 10000"
   }
 }
