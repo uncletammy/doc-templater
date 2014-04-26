@@ -1,8 +1,8 @@
 <h1>
-  <a title="Doc Templater" href="https://github.com/balderdashy/doc-templater">
-    <img width="50" title="Doc Templater" alt="(md) icon, representing the markdown syntax" src="http://dashkards.com/img/markdown-icon.png"/>
-  Doc-Templater
+  <a title="doc-templater" href="https://github.com/balderdashy/doc-templater">
+    <img width="75" title="doc-templater" alt="(md) icon, representing the markdown syntax" src="http://dashkards.com/img/markdown-icon.png"/>
   </a>
+  doc-templater
 </h1>
 
 [![NPM version](https://badge.fury.io/js/doc-templater.png)](http://badge.fury.io/js/doc-templater) &nbsp; &nbsp;
@@ -11,10 +11,90 @@
 Creates organized HTML documentation templates from sections of Github flavored markdown.
  
 
-### Use it like this
+### Installation
+
+```sh
+$ npm install doc-templater
+```
+
+### Usage
 
 ```javascript
+ var MDCompiler = require('doc-templater');
 
+MDCompiler.createTemplate([{
+    
+    // Source
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+
+    // Destination
+    parsedTemplatesDirectory: 'assets/templates/guides/'
+
+}], function (err, metadata) {
+  if (err) { return console.error('Failed to compile:\n',err); }
+
+  // It worked!
+
+  // `metadata` contains an array of objects with info about each
+  // template that was created, including its path.
+});
+```
+
+
+### Options
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>docsGitRepo</code><br/>(required)</td>
+      <td><vartype>string</vartype></td>
+      <td>
+        The source repository markdown source files will be fetched from, e.g.: `git://github.com/balderdashy/sails-docs-guides.git`
+      </td>
+    </tr>
+    <tr>
+      <td><code>parsedTemplatesDirectory</code><br/>(required)</td>
+      <td><vartype>string</vartype></td>
+      <td>
+        The destination directory where output HTML files will be created.
+      </td>
+    </tr>
+    <tr>
+      <td><code>dirNameInRepo</code></td>
+      <td><vartype>string</vartype></td>
+      <td>
+        Path to the directory of markdown files in the repo (if omitted, the root directory will be used)
+      </td>
+    </tr>
+    <tr>
+      <td><code>prependPathAndName</code></td>
+      <td><vartype>boolean</vartype></td>
+      <td>
+        Whether source path+filename should be prepended to the name of the output file
+      </td>
+    </tr>
+    <tr>
+      <td><code>addToSitemap</code></td>
+      <td><vartype>boolean</vartype></td>
+      <td>
+        Whether an entry for this HTML file should be added to a generated sitemap.xml file
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Detailed Example
+
+```javascript
 
 		var templater = require('doc-templater');
 
@@ -176,3 +256,5 @@ This module is part of the [Node.js](http://nodejs.org) and [Sails framework](ht
  
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)
+
+
