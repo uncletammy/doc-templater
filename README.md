@@ -1,6 +1,6 @@
 <h1>
   <a title="Doc Templater" href="https://github.com/balderdashy/doc-templater">
-    <img title="Doc Templater" alt="(md) icon, representing the markdown syntax" src="http://dashkards.com/img/markdown-icon.png"/>
+    <img width="50" title="Doc Templater" alt="(md) icon, representing the markdown syntax" src="http://dashkards.com/img/markdown-icon.png"/>
   Doc-Templater
   </a>
 </h1>
