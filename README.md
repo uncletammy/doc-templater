@@ -37,11 +37,11 @@ require('doc-templater').createTemplate([{
 ```
 
 
-### `createTemplate(instructions, [, callback])`
+### Methods
+
+#### createTemplate(instructions, [, callback])
 
 The `createTemplate()` function accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
-
-### Options
 
 The following options may be used as keys in build instruction objects:
 
