@@ -19,9 +19,30 @@ $ npm install doc-templater
 
 ## Usage
 
+```javascript
+require('doc-templater').createTemplate([{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+    parsedTemplatesDirectory: 'assets/templates/guides/'
+}], function whenFinished (err, metadata) {
+  if (err) { return console.error('Failed to compile:\n',err); }
+  // `metadata` contains an array of objects with info about each
+  // template that was created, including its path.
+});
+```
+
+## Reference
+
 ### createTemplate(instructions, [, callback])
 
-The `createTemplate()` function accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
+The `createTemplate()` function pulls markdown file(s) from the specified git repo(s), then compiles them into HTML file(s) using the `marked` module.  It accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
+
+A complete list of the options for `instructions` is located below.
+
+The `callback` argument is a standard Node callback with the conventional function signature: `(err, metadata)`  If something went wrong, the error argument will be truthy.  The `metadata` argument consists of an array of objects containing info about each template that was created, including its new path.
+
+
+
+### Instruction Options
 
 The following options may be used as keys in build instruction objects:
 
@@ -73,23 +94,7 @@ The following options may be used as keys in build instruction objects:
 </table>
 
 
-#### Example
-```javascript
-// Pull markdown files from the specified git repo, then compile
-// them into HTML markup using the `marked` module.
-require('doc-templater').createTemplate([{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-    parsedTemplatesDirectory: 'assets/templates/guides/'
-}], function whenFinished (err, metadata) {
-  if (err) { return console.error('Failed to compile:\n',err); }
 
-  // It worked!
-  // HTML files were created from the source markup.
-
-  // `metadata` contains an array of objects with info about each
-  // template that was created, including its path.
-});
-```
 
 
 ### License
