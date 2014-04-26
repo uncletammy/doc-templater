@@ -1,42 +1,41 @@
+var DocTemplater = require('../lib');
+var compiler = DocTemplater();
 
-    var templater = require('doc-templater');
+var buildInstructions = [{
+  docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+  prependPathAndName: true,
+  addToSitemap: false,
+  parsedTemplatesDirectory: 'assets/templates/guides/'
+}, {
+  docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+  dirNameInRepo: 'reference',
+  prependPathAndName: true,
+  addToSitemap: true,
+  parsedTemplatesDirectory: 'assets/templates/reference/',
+  applyToTemplates: {
+    //beforeConvert: function(writeFileObject,cb){},
+    afterConvert: function(writeFileObject, cb) {
+      writeFileObject.templateHTML = writeFileObject.templateHTML.replace(/\d{1,2}-\d{1,2}-\d{4}/ig, 'TIME AINT REAL');
+      return cb(writeFileObject);
+    }
+  }
+}, {
+  docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+  dirNameInRepo: 'anatomy',
+  prependPathAndName: false,
+  addToSitemap: true,
+  parsedTemplatesDirectory: 'assets/templates/anatomy/'
+}];
 
-    var parseThese = [{
-        docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-        prependPathAndName: true,
-        addToSitemap: false,
-        parsedTemplatesDirectory: 'assets/templates/guides/'
-      },{
-        docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-        dirNameInRepo: 'reference',
-        prependPathAndName: true,
-        addToSitemap: true,
-        parsedTemplatesDirectory: 'assets/templates/reference/',
-        applyToTemplates:{
-          //beforeConvert: function(writeFileObject,cb){},
-          afterConvert: function(writeFileObject,cb){
-            writeFileObject.templateHTML = writeFileObject.templateHTML.replace(/\d{1,2}-\d{1,2}-\d{4}/ig,'TIME AINT REAL');
-            return cb(writeFileObject)
-          }
-        }
-      },{
-        docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-        dirNameInRepo: 'anatomy',
-        prependPathAndName: false,
-        addToSitemap: true,
-        parsedTemplatesDirectory: 'assets/templates/anatomy/'
-      }];
-    
-    var afterTemplateCB = function(err,stuff){
-          if (err){
-            console.log('There was at least one error bro',err)
-          } else {
-            console.log('No errors.  WOOOO!');
-            console.log('All the Stuff:',stuff)
-          }
-    };
-    
-    templater.createTemplate(parseThese,afterTemplateCB);
+
+compiler.build(buildInstructions, function afterTemplateCB (err, stuff) {
+  if (err) {
+    console.error('There was at least one error bro', err);
+  } else {
+    console.log('No errors.  WOOOO!');
+    console.log('All the Stuff:', stuff);
+  }
+});
 
 /*
 dude@littleDude:~/node/templaterTest$ node testItBro.js 
