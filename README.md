@@ -17,6 +17,20 @@ Compiles Github flavored markdown files into organized HTML templates, with supp
 $ npm install doc-templater
 ```
 
+
+### In a Node script
+
+```javascript
+var DocTemplater = require('doc-templater');
+var compiler = DocTemplater();
+
+compiler.build([{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+    parsedTemplatesDirectory: 'assets/templates/guides/'
+}]);
+
+```
+
 ## Usage
 
 ### build(instructions, [, callback])
@@ -25,7 +39,7 @@ The `build()` function pulls markdown file(s) from the specified git repo(s), th
 
 
 ```javascript
-require('doc-templater').build([{
+compiler.build([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
     parsedTemplatesDirectory: 'assets/templates/guides/'
 }], function whenFinished (err, metadata) {
