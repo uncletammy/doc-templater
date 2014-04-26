@@ -19,13 +19,13 @@ $ npm install doc-templater
 
 ## Usage
 
-### createTemplate(instructions, [, callback])
+### build(instructions, [, callback])
 
-The `createTemplate()` function pulls markdown file(s) from the specified git repo(s), then compiles them into HTML file(s) using the `marked` module.  It accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
+The `build()` function pulls markdown file(s) from the specified git repo(s), then compiles them into HTML file(s) using the `marked` module.  It accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
 
 
 ```javascript
-require('doc-templater').createTemplate([{
+require('doc-templater').build([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
     parsedTemplatesDirectory: 'assets/templates/guides/'
 }], function whenFinished (err, metadata) {
