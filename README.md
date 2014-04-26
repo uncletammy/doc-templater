@@ -11,35 +11,15 @@
 Creates organized HTML documentation templates from sections of Github flavored markdown.
  
 
-### Installation
+## Installation
 
 ```sh
 $ npm install doc-templater
 ```
 
-### Usage
+## Usage
 
-```javascript
-// Pull markdown files from the specified git repo, then compile
-// them into HTML markup using the `marked` module.
-require('doc-templater').createTemplate([{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-    parsedTemplatesDirectory: 'assets/templates/guides/'
-}], function whenFinished (err, metadata) {
-  if (err) { return console.error('Failed to compile:\n',err); }
-
-  // It worked!
-  // HTML files were created from the source markup.
-
-  // `metadata` contains an array of objects with info about each
-  // template that was created, including its path.
-});
-```
-
-
-### Methods
-
-#### createTemplate(instructions, [, callback])
+### createTemplate(instructions, [, callback])
 
 The `createTemplate()` function accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
 
@@ -91,6 +71,25 @@ The following options may be used as keys in build instruction objects:
     </tr>
   </tbody>
 </table>
+
+
+#### Example
+```javascript
+// Pull markdown files from the specified git repo, then compile
+// them into HTML markup using the `marked` module.
+require('doc-templater').createTemplate([{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+    parsedTemplatesDirectory: 'assets/templates/guides/'
+}], function whenFinished (err, metadata) {
+  if (err) { return console.error('Failed to compile:\n',err); }
+
+  // It worked!
+  // HTML files were created from the source markup.
+
+  // `metadata` contains an array of objects with info about each
+  // template that was created, including its path.
+});
+```
 
 
 ### License
