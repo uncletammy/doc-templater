@@ -29,7 +29,9 @@
     "url": "https://github.com/uncletammy/doc-templater/issues"
   },
   "homepage": "https://github.com/uncletammy/doc-templater",
-  "devDependencies": {},
+  "devDependencies": {
+    "fs-extra": "~0.8.1"
+  },
   "scripts": {
     "test": "mocha test -R spec -b"
   }
