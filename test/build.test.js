@@ -1,17 +1,19 @@
 var assert = require('assert');
 var fsx = require('fs-extra');
 var Compiler = require('../lib/Compiler');
-
+var path = require('path');
 
 
 describe('Compiler.prototype.build', function () {
   
   var compiler = new Compiler();
 
-  var REPO_URL = 'git@github.com:mikermcneil/doc-templater.git';
+  var TEST_OUTPUT_DIR = '.tmp/testoutput';
+  var TEST_REPO_URL = 'git@github.com:mikermcneil/doc-templater.git';
+  var TEST_REPO_PATH = 'test/fixtures/dummySrcFiles';
 
   // TODO: When this is merged, switch to:
-  // var REPO_URL = 'git@github.com:uncletammy/doc-templater.git';
+  // var TEST_REPO_URL = 'git@github.com:uncletammy/doc-templater.git';
 
   // Make sure a temporary directory exists
   // and empty it out if it does already
@@ -21,7 +23,7 @@ describe('Compiler.prototype.build', function () {
   // afterEach(wipeTmpFiles);
   beforeEach(wipeTmpFiles);
   function wipeTmpFiles () {
-    var tmpDirPath = require('path').resolve(__dirname,'../.tmp');
+    var tmpDirPath = path.resolve(__dirname,'../.tmp');
     try {
       fsx.removeSync(tmpDirPath);
     }
@@ -39,8 +41,9 @@ describe('Compiler.prototype.build', function () {
     this.slow(5000);
 
     compiler.build([{
-      docsGitRepo: REPO_URL,
-      parsedTemplatesDirectory: '.tmp/foo'
+      docsGitRepo: TEST_REPO_URL,
+      dirNameInRepo: 'test/fixtures/dummySrcFiles',
+      parsedTemplatesDirectory: TEST_OUTPUT_DIR
     }], done);
   });
 
@@ -49,11 +52,13 @@ describe('Compiler.prototype.build', function () {
     this.slow(5000);
 
     compiler.build([{
-      docsGitRepo: REPO_URL,
-      parsedTemplatesDirectory: '.tmp/foo'
+      docsGitRepo: TEST_REPO_URL,
+      dirNameInRepo: 'test/fixtures/dummySrcFiles',
+      parsedTemplatesDirectory: TEST_OUTPUT_DIR
     }], function whenFinished (err, metadata){
       if (err) return done(err);
-      assert(fsx.existsSync('.tmp/foo'));
+      assert(fsx.existsSync(TEST_OUTPUT_DIR));
+      assert(fsx.existsSync(TEST_OUTPUT_DIR));
       done();
     });
   });
@@ -63,13 +68,14 @@ describe('Compiler.prototype.build', function () {
     this.slow(5000);
 
     compiler.build([{
-      docsGitRepo: REPO_URL,
-      parsedTemplatesDirectory: '.tmp/foo',
+      docsGitRepo: TEST_REPO_URL,
+      dirNameInRepo: 'test/fixtures/dummySrcFiles',
+      parsedTemplatesDirectory: TEST_OUTPUT_DIR,
       dontSplitFiles: true
     }], function whenFinished (err, metadata){
       if (err) return done(err);
-      assert(fsx.existsSync('.tmp/foo'));
-      assert(fsx.existsSync('.tmp/foo'));
+      assert(fsx.existsSync(TEST_OUTPUT_DIR));
+      assert(fsx.existsSync(TEST_OUTPUT_DIR));
       done();
     });
   });
