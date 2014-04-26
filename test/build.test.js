@@ -22,7 +22,8 @@ describe('Compiler.prototype.build', function () {
 
   it('should not throw or error out when passed a valid array of build instructions', function (done) {
     compiler.build([{
-
+      docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
+      parsedTemplatesDirectory: '.tmp/foo'
     }], function whenFinished (err, metadata){
       if (err) return done(err);
       done();
