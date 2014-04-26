@@ -59,9 +59,9 @@ describe('Compiler.prototype.build', function () {
       if (err) return done(err);
       assert(fsx.existsSync(TEST_OUTPUT_DIR));
       assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')));
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')));
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')));
       assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Testthing.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Testagain.html')));
       done();
     });
   });
@@ -81,6 +81,10 @@ describe('Compiler.prototype.build', function () {
       assert(fsx.existsSync(TEST_OUTPUT_DIR));
       assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')));
       assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')));
+
+      // No split files should have been created
+      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')));
+      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')));
       done();
     });
   });
