@@ -57,11 +57,11 @@ describe('Compiler.prototype.build', function () {
       parsedTemplatesDirectory: TEST_OUTPUT_DIR
     }], function whenFinished (err, metadata){
       if (err) return done(err);
-      assert(fsx.existsSync(TEST_OUTPUT_DIR));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')));
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo')), 'Expected output directory was not created');
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')), 'Expected output file was not created');
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')), 'Expected output file was not created');
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')), 'Expected output file was not created');
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')), 'Expected output file was not created');
       done();
     });
   });
@@ -79,12 +79,12 @@ describe('Compiler.prototype.build', function () {
     }], function whenFinished (err, metadata){
       if (err) return done(err);
       assert(fsx.existsSync(TEST_OUTPUT_DIR));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')));
-      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')));
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Foo.html')), 'Expected output file was not created');
+      assert(fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Bar/Bar.html')), 'Expected output file was not created');
 
       // No split files should have been created
-      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')));
-      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')));
+      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/Testthing.html')), 'Split file should NOT have been created');
+      assert(!fsx.existsSync(path.resolve(TEST_OUTPUT_DIR, 'Foo/TESTAGAIN.html')), 'Split file should NOT have been created');
       done();
     });
   });
