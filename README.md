@@ -1,4 +1,9 @@
-# [![Doc-Templater](http://dashkards.com/img/markdown-icon.png) Doc-Templater](https://github.com/balderdashy/doc-templater)
+<h1>
+  <a title="Doc Templater" href="https://github.com/balderdashy/doc-templater">
+    <img title="Doc Templater" alt="(md) icon, representing the markdown syntax" src="http://dashkards.com/img/markdown-icon.png"/>
+  Doc-Templater
+  </a>
+</h1>
 
 [![NPM version](https://badge.fury.io/js/doc-templater.png)](http://badge.fury.io/js/doc-templater) &nbsp; &nbsp;
 [![Build Status](https://travis-ci.org/balderdashy/doc-templater.svg?branch=master)](https://travis-ci.org/balderdashy/doc-templater)
