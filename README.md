@@ -19,18 +19,15 @@ $ npm install doc-templater
 
 ### Usage
 
+The `createTemplate()` function accepts two arguments- an array of build instruction objects and a callback function that runs when the build is complete.
+
 ```javascript
- var MDCompiler = require('doc-templater');
-
-MDCompiler.createTemplate([{
-    
-    // Source
+// Pull markdown files from the specified git repo, then compile
+// them into HTML markup using the `marked` module.
+require('doc-templater').createTemplate([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-
-    // Destination
     parsedTemplatesDirectory: 'assets/templates/guides/'
-
-}], function (err, metadata) {
+}], function whenFinished (err, metadata) {
   if (err) { return console.error('Failed to compile:\n',err); }
 
   // It worked!
@@ -44,6 +41,7 @@ MDCompiler.createTemplate([{
 
 ### Options
 
+The following options may be used as keys in build instruction objects:
 
 <table>
   <thead>
@@ -55,14 +53,14 @@ MDCompiler.createTemplate([{
   </thead>
   <tbody>
     <tr>
-      <td><code>docsGitRepo</code><br/>(required)</td>
+      <td><code>docsGitRepo</code><br/><em>(required)</em></td>
       <td><vartype>string</vartype></td>
       <td>
         The source repository markdown source files will be fetched from, e.g.: `git://github.com/balderdashy/sails-docs-guides.git`
       </td>
     </tr>
     <tr>
-      <td><code>parsedTemplatesDirectory</code><br/>(required)</td>
+      <td><code>parsedTemplatesDirectory</code><br/><em>(required)</em></td>
       <td><vartype>string</vartype></td>
       <td>
         The destination directory where output HTML files will be created.
