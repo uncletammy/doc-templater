@@ -20,14 +20,19 @@
     "markdown"
   ],
   "author": "Nicholas Crumrine",
+  "contributors": [
+    "balderdashy"
+  ],
   "main": "lib/index.js",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/uncletammy/doc-templater/issues"
   },
   "homepage": "https://github.com/uncletammy/doc-templater",
-  "devDependencies": {},
+  "devDependencies": {
+    "fs-extra": "~0.8.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test -R spec -b -t 10000"
   }
 }
