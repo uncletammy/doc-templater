@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/uncletammy/doc-templater",
   "devDependencies": {
-    "fs-extra": "~0.8.1"
+    "fs-extra": "~0.8.1",
+    "mocha": "~1.18.2"
   },
   "scripts": {
     "test": "mocha test -R spec -b -t 10000"
