@@ -1,7 +1,7 @@
 {
   "name": "doc-templater",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Creates organized HTML templates from markdown files that are hosted on Github Repos",
   "dependencies": {
     "marked": "0.2.10",
