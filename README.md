@@ -11,6 +11,10 @@
 Compiles Github flavored markdown files into organized HTML templates, with support for pulling directly from one or more git repositories.
  
 
+## reh
+
+Now supports branches and infinitely deep docs directories.  
+
 ## Installation
 
 ```sh
