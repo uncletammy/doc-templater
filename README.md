@@ -129,20 +129,6 @@ The following options may be used as keys in build instruction objects:
 </table>
 
 
-
-{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs-reference.git',
-     // docsGitRepo: 'git://github.com/balderdashy/sails-docs-reference.git',
-    dontSplitFiles: true,
-    //dirNameInRepo:'reference',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    },
-    saveJsonMenu: 'assets/templates/jsmenus/reference.jsmenu',
-    parsedTemplatesDirectory: 'assets/templates/reference'
-  }
-
 ### License
 
 
