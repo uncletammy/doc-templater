@@ -73,7 +73,7 @@ The following options may be used as keys in build instruction objects:
       <td><code>docsGitRepo</code><br/><em>(required)</em></td>
       <td><vartype>string</vartype></td>
       <td>
-        The source repository markdown source files will be fetched from, e.g.: `git://github.com/balderdashy/sails-docs-guides.git`
+        The source repository from which source markdown files will be fetched, e.g.: `git://github.com/balderdashy/sails-docs-guides.git#v08`.  If the branch is ommited, `master` will be used.
       </td>
     </tr>
     <tr>
@@ -91,17 +91,38 @@ The following options may be used as keys in build instruction objects:
       </td>
     </tr>
     <tr>
-      <td><code>prependPathAndName</code></td>
-      <td><vartype>boolean</vartype></td>
+      <td><code>saveJsonMenu</code></td>
+      <td><vartype>string</vartype></td>
       <td>
-        Whether source path+filename should be prepended to the name of the output file
+        The relative path and filename where an optional json file will be saved.  This file is a json representation of the compiled documentation templates. e.g.: `assets/templates/jsmenus/reference.jsmenu`.
       </td>
     </tr>
     <tr>
+      <td><code>applyToTemplates</code></td>
+      <td><vartype>object</vartype></td>
+      <td>
+        Object that contains user hooks allowing manipulation of the templates before and/or after they are compiled but before they are written to disk.  See below for usage.
+      </td>
+    </tr>    
+    <tr>
+      <td><code>applyToTemplates.beforeConvert</code></td>
+      <td><vartype>function</vartype></td>
+      <td>
+        Function that gets called on every template file before it is compiled and written to disk.  It gets two arguments.  The first is an object containing information about the template being compiled.  The second is a callback THAT MUST BE CALLED in order for doc-templater to continue compiling.
+      </td>
+    </tr>    
+    <tr>
+      <td><code>applyToTemplates.afterConvert</code></td>
+      <td><vartype>function</vartype></td>
+      <td>
+        Function that gets called on every template file after it has been compiled but before it is written to disk.  It gets two arguments.  The first is an object containing information about the newly compiled template.  The second is a callback THAT MUST BE CALLED in order for doc-templater to continue compiling.
+      </td>
+    </tr>    
+    <tr>
       <td><code>addToSitemap</code></td>
       <td><vartype>boolean</vartype></td>
-      <td>
-        Whether an entry for this HTML file should be added to a generated sitemap.xml file
+      <td>(NOT YET SUPPORTED)
+        Whether an entry for this HTML file should be added to a generated sitemap.xml file 
       </td>
     </tr>
   </tbody>
@@ -109,7 +130,18 @@ The following options may be used as keys in build instruction objects:
 
 
 
-
+{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-reference.git',
+     // docsGitRepo: 'git://github.com/balderdashy/sails-docs-reference.git',
+    dontSplitFiles: true,
+    //dirNameInRepo:'reference',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    },
+    saveJsonMenu: 'assets/templates/jsmenus/reference.jsmenu',
+    parsedTemplatesDirectory: 'assets/templates/reference'
+  }
 
 ### License
 
