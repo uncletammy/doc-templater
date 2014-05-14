@@ -11,9 +11,9 @@
 Compiles Github flavored markdown files into organized HTML templates, with support for pulling directly from one or more git repositories.
  
 
-## reh
+## New !
 
-Now supports branches and infinitely deep docs directories.  
+Now supports git branches, infinitely deep docs directories, and outputting json menus with template metaData attached (use `<docmeta name="keyname" value="keyvalue">` inside of templates).  
 
 ## Installation
 
