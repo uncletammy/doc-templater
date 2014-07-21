@@ -23,7 +23,7 @@
   "contributors": [
     "balderdashy"
   ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uncletammy/doc-templater/issues"

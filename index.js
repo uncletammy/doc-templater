@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-var Compiler = require('./Compiler');
+var Compiler = require('./lib/Compiler');
 
 
 
@@ -12,7 +12,7 @@ var Compiler = require('./Compiler');
  */
 
 module.exports = function CompilerFactory (options) {
-	return new Compiler(options);
+	return new Compiler(options||{});
 };
 
 // Backwards-compatibility:
