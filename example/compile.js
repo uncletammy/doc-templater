@@ -1,40 +1,59 @@
-var DocTemplater = require('../lib');
-var compiler = DocTemplater();
+/**
+ * Module dependencies
+ */
 
-var buildInstructions = [{
-  docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-  prependPathAndName: true,
-  addToSitemap: false,
-  parsedTemplatesDirectory: 'assets/templates/guides/'
-}, {
-  docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-  dirNameInRepo: 'reference',
-  prependPathAndName: true,
-  addToSitemap: true,
-  parsedTemplatesDirectory: 'assets/templates/reference/',
-  applyToTemplates: {
-    //beforeConvert: function(writeFileObject,cb){},
-    afterConvert: function(writeFileObject, cb) {
-      writeFileObject.templateHTML = writeFileObject.templateHTML.replace(/\d{1,2}-\d{1,2}-\d{4}/ig, 'TIME AINT REAL');
-      return cb(writeFileObject);
+var DocTemplater = require('../');
+
+
+/**
+ * DocTemplater build example
+ */
+
+DocTemplater()
+.build({
+
+  templates: [
+    {
+      src: {
+        remote: 'git://github.com/balderdashy/sails-docs.git',
+        path: 'reference/'
+      },
+      dest: {
+        cwd: process.cwd(),
+        html: '.tmp/public/templates/documentation/reference',
+        jsmenu: '.tmp/public/templates/jsmenus/reference.jsmenu'
+      }
+    },
+    {
+      src: {
+        remote: 'git://github.com/balderdashy/sails-docs.git',
+        path: 'anatomy/'
+      },
+      dest: {
+        cwd: process.cwd(),
+        html: '.tmp/public/templates/documentation/anatomy',
+        jsmenu: '.tmp/public/templates/jsmenus/anatomy.jsmenu'
+      }
     }
+  ],
+
+  beforeConvert: function (markdown, done) {
+    done();
+  },
+
+  afterConvert: function (html, done) {
+    done();
   }
-}, {
-  docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-  dirNameInRepo: 'anatomy',
-  prependPathAndName: false,
-  addToSitemap: true,
-  parsedTemplatesDirectory: 'assets/templates/anatomy/'
-}];
 
-
-compiler.build(buildInstructions, function afterTemplateCB (err, stuff) {
+},
+function afterwards (err, metadata) {
   if (err) {
-    console.error('There was at least one error bro', err);
-  } else {
-    console.log('No errors.  WOOOO!');
-    console.log('All the Stuff:', stuff);
+    console.error(err);
+    return process.exit(1);
   }
+
+  console.log('Metadata concerning the compiled template hierarchy:', metadata);
+  return;
 });
 
 /*

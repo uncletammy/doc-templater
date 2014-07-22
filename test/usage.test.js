@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Compiler = require('../lib/Compiler');
+var Compiler = require('../lib/Compiler.constructor');
 
 
 
@@ -18,11 +18,15 @@ describe('Compiler.prototype', function () {
 
   describe('.build()', function () {
     describe('usage', function () {
-      it('should not throw when an empty set of build instructions is supplied', function () {
-        compiler.build([], function NOOP (){});
+      it('should not throw when an empty set of templates is supplied', function () {
+        compiler.build({
+          templates: []
+        }, function NOOP (){});
       });
       it('callback should be optional', function () {
-        compiler.build([]);
+        compiler.build({
+          templates: []
+        });
       });
     });
 

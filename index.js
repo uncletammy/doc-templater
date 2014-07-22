@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-var Compiler = require('./lib/Compiler');
+var Compiler = require('./lib/Compiler.constructor');
 
 
 
