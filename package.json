@@ -3,11 +3,8 @@
   "version": "0.0.9",
   "description": "Creates organized HTML templates from markdown files that are hosted on Github Repos",
   "dependencies": {
-    "marked": "0.2.10",
     "fs-extra": "~0.8.1",
     "lodash": "~2.4.1",
-    "node-jsondir": "git://github.com/dwieeb/node-jsondir.git",
-    "list-directory-contents": "~0.0.1",
     "machinepack-git": "0.0.1",
     "machinepack-markdown": "0.0.1",
     "machinepack-fs": "0.0.1"
