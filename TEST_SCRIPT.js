@@ -6,6 +6,6 @@ k({
   htmlDirPath: '/code/sandbox/doctemplatertest/foo/bar/html',
   jsMenuPath: '/code/sandbox/doctemplatertest/foo/bar.jsmenu'
 }, function (e,r) {
-  if (e) {console.log('ERROR:\n',e);}
-  else console.log('RESULT:\n',r);
+  if (e) {console.log('ERROR:\n',require('util').inspect(e, false, null));}
+  else console.log('RESULT:\n',require('util').inspect(r, false, null));
 });
