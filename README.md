@@ -129,6 +129,59 @@ The following options may be used as keys in build instruction objects:
 </table>
 
 
+
+<!--
+
+  // Example input:
+  // -----------------------------------------------------------------
+  // 
+  // templates: [
+  //   {
+  //     src: {
+  //       remote: 'git://github.com/balderdashy/sails-docs.git',
+  //       path: 'reference/'
+  //     },
+  //     dest: {
+  //       cwd: process.cwd(),
+  //       html: '.tmp/public/templates/documentation/reference',
+  //       jsmenu: '.tmp/public/templates/jsmenus/reference.jsmenu'
+  //     }
+  //   },
+  //   {
+  //     src: {
+  //       remote: 'git://github.com/balderdashy/sails-docs.git',
+  //       path: 'anatomy/'
+  //     },
+  //     dest: {
+  //       cwd: process.cwd(),
+  //       html: '.tmp/public/templates/documentation/anatomy',
+  //       jsmenu: '.tmp/public/templates/jsmenus/anatomy.jsmenu'
+  //     }
+  //   }
+  // ],
+  // beforeConvert: function (markdown, done) {
+  //   done();
+  // },
+  // afterConvert: function (html, done) {
+  //   done();
+  // }
+  // -----------------------------------------------------------------
+  //
+  // • Ensure our tmp directory exists
+  //
+  // • compile template object (/i.e. build instruction)
+  //   -- see (A) below --
+  //   
+  // • if any error occurs in any one template object (i.e. build step), bail out of
+  //   trying to read/compile/write stuff for this particular step and push the error
+  //   onto a error stack (shared by this entire build) which is available in closure
+  //   scope.  It will be handled later, but shouldn't prevent the other build steps
+  //   from completing.
+
+-->
+
+
+
 ### License
 
 
@@ -142,5 +195,3 @@ This module is part of the [Node.js](http://nodejs.org) and [Sails framework](ht
  
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)
-
-
