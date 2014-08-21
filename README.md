@@ -8,14 +8,10 @@
 [![NPM version](https://badge.fury.io/js/doc-templater.png)](http://badge.fury.io/js/doc-templater) &nbsp; &nbsp;
 [![Build Status](https://travis-ci.org/uncletammy/doc-templater.svg?branch=master)](https://travis-ci.org/uncletammy/doc-templater)
 
-Compiles Github flavored markdown files into organized HTML templates, with support for pulling directly from one or more git repositories.
+Compiles a tree of Github-flavored markdown files into themable HTML templates.  Supports pulling directly from multiple remote or local git repositories and exposes lifecycle hooks for transforming markdown input (beforeConvert) or HTML output (afterConvert).  Also writes flat tree arrays representing the directory hierarchy as JSON files.
  
 
-## New !
-
-Now supports git branches, infinitely deep docs directories, and outputting json menus with template metaData attached (use `<docmeta name="keyname" value="keyvalue">` inside of templates).  
-
-## Installation
+### Installation
 
 ```sh
 $ npm install doc-templater
@@ -26,11 +22,10 @@ $ npm install doc-templater
 
 ```javascript
 var DocTemplater = require('doc-templater');
-var compiler = DocTemplater();
 
-compiler.build([{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs-guides.git',
-    parsedTemplatesDirectory: 'assets/templates/guides/'
+DocTemplater().build([{
+  remote: 'git://github.com/balderdashy/sails-docs-guides.git',
+  remoteDirPath: 'assets/templates/guides/'
 }]);
 
 ```
@@ -52,6 +47,15 @@ compiler.build([{
   // template that was created, including its path.
 });
 ```
+
+================================================
+> ### TODO
+>
+> Note to self:                  ||
+> finish updating the rest below \/
+> ~mike
+================================================
+
 
 A complete list of the options for `instructions` is located below.
 
@@ -129,11 +133,27 @@ The following options may be used as keys in build instruction objects:
 </table>
 
 
+
+
+### Changelog
+
+> #####v0.1.0
+> __August 2014__
+>
+> Refactored to use smaller, more testable modules and enhance stability.  Also added some caching/performance improvements.
+>
+>
+> #####v0.0.9
+> __May 2014__
+>
+> Now supports git branches, infinitely deep docs directories, and outputting json menus with template metaData attached (use `<docmeta name="keyname" value="keyvalue">` inside of templates).  
+
+
 ### License
 
 
 **[MIT](./LICENSE)**
-&copy; 2013-2014 [Nicholas Crumrine](https://github.com/uncletammy), [Balderdash](http://balderdash.co) & contributors
+&copy; 2013-2014 [Nicholas Crumrine](https://github.com/uncletammy), [Mike McNeil](https://github.com/mikermcneil) & contributors
 
 This module is part of the [Node.js](http://nodejs.org) and [Sails framework](http://sailsjs.org) ecosystem, and is free and open-source under the [MIT License](http://sails.mit-license.org/).
 
@@ -142,5 +162,3 @@ This module is part of the [Node.js](http://nodejs.org) and [Sails framework](ht
  
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)
-
-

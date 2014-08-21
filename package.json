@@ -1,13 +1,18 @@
 {
   "name": "doc-templater",
-  "private": false,
   "version": "0.0.9",
-  "description": "Creates organized HTML templates from markdown files that are hosted on Github Repos",
+  "description": "Compiles a tree of Github-flavored markdown files into themable HTML templates.  Supports pulling directly from multiple remote or local git repositories and exposes lifecycle hooks for transforming markdown input (beforeConvert) or HTML output (afterConvert).  Also writes flat tree arrays representing the directory hierarchy as JSON files.",
   "dependencies": {
-    "marked": "0.2.10",
     "fs-extra": "~0.8.1",
     "lodash": "~2.4.1",
-    "node-jsondir": "git://github.com/dwieeb/node-jsondir.git"
+    "async": "~0.9.0",
+    "machinepack-git": "~0.0.5",
+    "machinepack-markdown": "~0.0.5",
+    "machinepack-fs": "~0.0.1"
+  },
+  "devDependencies": {
+    "fs-extra": "~0.8.1",
+    "mocha": "~1.18.2"
   },
   "repository": {
     "type": "git",
@@ -15,24 +20,23 @@
   },
   "keywords": [
     "gfmd",
+    "markdown converter",
+    "build docs",
     "documentation templates",
     "docs",
     "markdown"
   ],
-  "author": "Nicholas Crumrine",
   "contributors": [
+    "uncletammy",
+    "mikermcneil",
     "balderdashy"
   ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uncletammy/doc-templater/issues"
   },
   "homepage": "https://github.com/uncletammy/doc-templater",
-  "devDependencies": {
-    "fs-extra": "~0.8.1",
-    "mocha": "~1.18.2"
-  },
   "scripts": {
     "test": "mocha test -R spec -b -t 10000"
   }
