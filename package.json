@@ -8,7 +8,8 @@
     "async": "~0.9.0",
     "machinepack-git": "~0.0.5",
     "machinepack-markdown": "~0.0.5",
-    "machinepack-fs": "~0.0.1"
+    "machinepack-fs": "~0.0.4",
+    "node-machine": "^0.1.1"
   },
   "devDependencies": {
     "fs-extra": "~0.8.1",
