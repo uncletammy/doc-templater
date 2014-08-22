@@ -18,6 +18,25 @@ $ npm install doc-templater
 ```
 
 
+### New Usage
+
+```js
+
+// dumb dumb test script
+require('doc-templater')().build({
+  remote: 'git@github.com:balderdashy/sails.git',
+  remoteSubPath: '',
+  cachePath: '/code/sandbox/doctemplatertest/foo/bar/cache/',
+  htmlDirPath: '/code/sandbox/doctemplatertest/foo/bar/html',
+  jsMenuPath: '/code/sandbox/doctemplatertest/foo/bar.jsmenu'
+}, function (e,r) {
+  if (e) {console.log('ERROR:\n',require('util').inspect(e, false, null));}
+  else console.log('RESULT:\n',require('util').inspect(r, false, null));
+});
+
+```
+
+<!--
 ### In a Node script
 
 ```javascript
@@ -148,6 +167,8 @@ The following options may be used as keys in build instruction objects:
 >
 > Now supports git branches, infinitely deep docs directories, and outputting json menus with template metaData attached (use `<docmeta name="keyname" value="keyvalue">` inside of templates).  
 
+-->
+
 
 ### License
 
@@ -162,3 +183,5 @@ This module is part of the [Node.js](http://nodejs.org) and [Sails framework](ht
  
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)
+-->
+
