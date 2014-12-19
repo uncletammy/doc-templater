@@ -7,9 +7,9 @@
     "lodash": "~2.4.1",
     "async": "~0.9.0",
     "machinepack-git": "~0.0.5",
-    "machinepack-markdown": "~0.0.5",
-    "machinepack-fs": "~0.0.4",
-    "node-machine": "^0.1.1"
+    "machinepack-markdown": "~0.3.0",
+    "machinepack-fs": "~1.3.4",
+    "machine": "^1.0.7"
   },
   "devDependencies": {
     "fs-extra": "~0.8.1",
