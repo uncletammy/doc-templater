@@ -9,7 +9,7 @@
     "machinepack-git": "~0.1.1",
     "machinepack-markdown": "~1.0.0",
     "machinepack-fs": "~1.3.4",
-    "machine": "^1.0.7"
+    "machine": "^2.0.4"
   },
   "devDependencies": {
     "fs-extra": "~0.8.1",
