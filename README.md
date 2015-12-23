@@ -8,30 +8,37 @@
 [![NPM version](https://badge.fury.io/js/doc-templater.png)](http://badge.fury.io/js/doc-templater) &nbsp; &nbsp;
 [![Build Status](https://travis-ci.org/uncletammy/doc-templater.svg?branch=master)](https://travis-ci.org/uncletammy/doc-templater)
 
-Compiles a tree of Github-flavored markdown files into themable HTML templates.  Supports pulling directly from multiple remote or local git repositories and exposes lifecycle hooks for transforming markdown input (beforeConvert) or HTML output (afterConvert).  Also writes flat tree arrays representing the directory hierarchy as JSON files.
+Compiles a tree of Github-flavored markdown files into themable HTML templates.  Supports pulling directly from multiple remote or local git repositories and exposes lifecycle hooks for transforming markdown input (`beforeConvert`) or HTML output (`afterConvert`).  Also writes flat tree arrays representing the directory hierarchy as JSON files (these are saved as `.jsmenu` files currently, but never fear, they're just normal JSON).
+
+This module is used for the official Sails website at http://sailsjs.org.
  
 
 ### Installation
 
 ```sh
-$ npm install doc-templater
+$ npm install doc-templater --save
 ```
 
 
-### New Usage
+### Usage
 
 ```js
-
-// dumb dumb test script
 require('doc-templater')().build({
   remote: 'git@github.com:balderdashy/sails.git',
   remoteSubPath: '',
+  branch: 'master',
   cachePath: '/code/sandbox/doctemplatertest/foo/bar/cache/',
   htmlDirPath: '/code/sandbox/doctemplatertest/foo/bar/html',
   jsMenuPath: '/code/sandbox/doctemplatertest/foo/bar.jsmenu'
-}, function (e,r) {
-  if (e) {console.log('ERROR:\n',require('util').inspect(e, false, null));}
-  else console.log('RESULT:\n',require('util').inspect(r, false, null));
+}, function (err,result) {
+  // If something went wrong...
+  if (err) {
+    console.log('ERROR:\n',require('util').inspect(err, false, null));
+    return;
+  }
+  
+  // Otherwise, it worked!
+  console.log('RESULT:\n',require('util').inspect(result, false, null));
 });
 
 ```
@@ -152,7 +159,7 @@ The following options may be used as keys in build instruction objects:
 </table>
 
 
-
+-->
 
 ### Changelog
 
@@ -167,21 +174,14 @@ The following options may be used as keys in build instruction objects:
 >
 > Now supports git branches, infinitely deep docs directories, and outputting json menus with template metaData attached (use `<docmeta name="keyname" value="keyvalue">` inside of templates).  
 
--->
 
 
 ### License
 
 
 **[MIT](./LICENSE)**
-&copy; 2013-2014 [Nicholas Crumrine](https://github.com/uncletammy), [Mike McNeil](https://github.com/mikermcneil) & contributors
+&copy; 2013-2015 [Nicholas Crumrine](https://github.com/uncletammy), [Mike McNeil](https://github.com/mikermcneil) & contributors
 
-This module is part of the [Node.js](http://nodejs.org) and [Sails framework](http://sailsjs.org) ecosystem, and is free and open-source under the [MIT License](http://sails.mit-license.org/).
-
+This module is an official part of the [Sails framework](http://sailsjs.org) ecosystem, and is free and open-source under the [MIT License](http://sails.mit-license.org/).
 
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png) 
- 
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a22d3919de208c90c898986619efaa85 "githalytics.com")](http://githalytics.com/balderdashy/doc-templater)
--->
-
