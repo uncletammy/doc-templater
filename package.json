@@ -1,6 +1,6 @@
 {
   "name": "doc-templater",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Compiles a tree of Github-flavored markdown files into themable HTML templates.  Supports pulling directly from multiple remote or local git repositories and exposes lifecycle hooks for transforming markdown input (beforeConvert) or HTML output (afterConvert).  Also writes flat tree arrays representing the directory hierarchy as JSON files.",
   "dependencies": {
     "async": "~0.9.0",
