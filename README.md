@@ -18,7 +18,9 @@ This module is used for the official Sails website at http://sailsjs.org.
 ```sh
 $ npm install doc-templater --save
 ```
+## Bugs &nbsp; [![NPM version](https://badge.fury.io/js/doc-templater.svg)](http://npmjs.com/package/doc-templater)
 
+To report a bug, [click here](http://sailsjs.com/bugs).
 
 ### Usage
 
